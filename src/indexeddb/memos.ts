@@ -1,4 +1,5 @@
 import Dexie from 'dexie'
+import { memo } from 'react'
 
 export interface MemoRecord {
   datetime: string
@@ -13,4 +14,10 @@ const memos: Dexie.Table<MemoRecord, string> = database.table('memos')
 export const putMemo = async (title: string, text: string): Promise<void> => {
   const datetime = new Date().toISOString()
   await memos.put({ datetime, title, text })
+}
+
+export const getMemos = (): Promise<MemoRecord[]> => {
+  return memos.orderBy('datetime')
+              .reverse()
+              .toArray()
 }
