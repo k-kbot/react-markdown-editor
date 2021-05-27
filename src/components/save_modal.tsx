@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `
 
 const Modal = styled.div`
-  background: #fff;
+  background: #ffd;
   padding: 1rem;
   width: 32rem;
 `
